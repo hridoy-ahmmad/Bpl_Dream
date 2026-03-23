@@ -2,7 +2,7 @@ import React from 'react';
 import coin from '../../assets/Currency.png'
 import logo from '../../assets/logo.png'
 
-const Nav = () => {
+const Nav = ({coins}) => {
     return (
         <div className="navbar container mx-auto">
             <a className='navbar-start'>
@@ -27,7 +27,7 @@ const Nav = () => {
                     <li><a>Item 1</a></li>
                     <li><a>Item 3</a></li>
                 </ul>
-                <a className="btn rounded-xl"> 0 coins <img src={coin} alt="" /> </a>
+                <a className="btn rounded-xl"> {coins} coins <img src={coin} alt="" /> </a>
             </div>
 
         </div>
