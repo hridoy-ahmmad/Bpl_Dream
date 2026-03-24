@@ -24,6 +24,36 @@ function App() {
   const [coins, setCoins] = useState(200000)
 
   const handleSelect = (player) => {
+    if (coins < player.price) {
+      toast.error('Not Enough Money!', {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Zoom,
+      });
+      return;
+    }
+
+    if (selectedPlayer.length >= 6) {
+      toast.warning('Not allowed to buy over 6 players!', {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Zoom,
+      });
+      return;
+    }
+
     const isExist = selectedPlayer.find(item => item.id === player.id)
     if (isExist) {
       toast.error('Already Exists!', {
@@ -64,6 +94,7 @@ function App() {
   const handleDelete = (player) => {
     const filteredItem = selectedPlayer.filter(item => item.id !== player.id)
     setSelectdePlayer(filteredItem)
+    setCoins(coins + player.price)
     toast.success(<DeleteToast player={player}></DeleteToast>, {
       position: "top-center",
       autoClose: 1000,

@@ -5,7 +5,7 @@ const PlayerPool = ({ active, handleAvailabe, handleSelected, selectedPlayer }) 
     return (
         <div className='flex justify-between container mx-auto font-bold py-10'>
             <div>
-                <h1> {active ? `Available Players` : 'Selected Player'} </h1>
+                <h1> {active ? `Available Players` : `selected Players (${selectedPlayer.length} / 6)`} </h1>
             </div>
             <div >
                 <button
