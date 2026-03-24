@@ -41,7 +41,7 @@ function App() {
     }
     setSelectdePlayer([...selectedPlayer, player])
     setCoins(coins - player.price)
-    toast.success('Successfuly Selected', {
+    toast.success(`${player.name} -Successfuly Selected`, {
       position: "top-center",
       autoClose: 1000,
       hideProgressBar: false,
@@ -64,7 +64,7 @@ function App() {
   const handleDelete = (player) => {
     const filteredItem = selectedPlayer.filter(item => item.id !== player.id)
     setSelectdePlayer(filteredItem)
-    toast.success(<DeleteToast></DeleteToast>, {
+    toast.success(<DeleteToast player={player}></DeleteToast>, {
       position: "top-center",
       autoClose: 1000,
       hideProgressBar: false,
