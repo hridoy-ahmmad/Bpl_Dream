@@ -1,9 +1,10 @@
 import React from 'react';
-import { MdDelete } from 'react-icons/md';
+import { FaTrashAlt } from 'react-icons/fa';
+
 
 const SelectedPlayerCard = ({ item, handleDelete }) => {
-    
-    
+
+
     return (
         <div className='flex items-center justify-between p-4 border border-gray-200 rounded-xl mb-3'>
             <div className='flex items-center gap-4 '>
@@ -16,10 +17,10 @@ const SelectedPlayerCard = ({ item, handleDelete }) => {
                 </div>
             </div>
             <div className='text-2xl text-red-600'>
-                <MdDelete
+                <FaTrashAlt
                     className='cursor-pointer'
                     onClick={() => handleDelete(item)}
-                ></MdDelete>
+                />
             </div>
         </div>
     );

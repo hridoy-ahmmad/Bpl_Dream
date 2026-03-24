@@ -8,7 +8,7 @@ const Card = ({ item, handleSelect, selectedPlayer }) => {
         <div className="card bg-base-100  shadow-md border border-gray-100">
             <figure className='p-5'>
                 <img
-                    className='rounded-t-xl'
+                    className='rounded-t-xl h-96 w-full object-cover'
                     src={image} />
             </figure>
             <div className="p-5">
@@ -27,7 +27,7 @@ const Card = ({ item, handleSelect, selectedPlayer }) => {
                 </div>
                 <div className='flex justify-between items-center  font-semibold text-gray-500'>
                     <h4>Bowling Style:</h4>
-                    <p> {batting_style}</p>
+                    <p> {bowling_style}</p>
                 </div>
                 <div className="flex justify-between items-center py-4 font-semibold text-gray-600">
                     <h3>Price: ${price} </h3>
