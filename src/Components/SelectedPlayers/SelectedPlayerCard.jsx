@@ -2,6 +2,8 @@ import React from 'react';
 import { MdDelete } from 'react-icons/md';
 
 const SelectedPlayerCard = ({ item, handleDelete }) => {
+    
+    
     return (
         <div className='flex items-center justify-between p-4 border border-gray-200 rounded-xl mb-3'>
             <div className='flex items-center gap-4 '>

@@ -7,6 +7,8 @@ import PlayerPool from './Components/PlayerPool/PlayerPool'
 import Players from './Components/Players/Players'
 import Loading from './Components/Loading/Loading'
 import SelectedPlayers from './Components/SelectedPlayers/SelectedPlayers'
+import { Slide, toast, ToastContainer, Zoom } from 'react-toastify'
+import DeleteToast from './Components/DeleteToast'
 
 
 const playersData = async () => {
@@ -24,11 +26,32 @@ function App() {
   const handleSelect = (player) => {
     const isExist = selectedPlayer.find(item => item.id === player.id)
     if (isExist) {
-      alert('Already axist')
+      toast.error('Already Exists!', {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Zoom,
+      });
       return
     }
     setSelectdePlayer([...selectedPlayer, player])
     setCoins(coins - player.price)
+    toast.success('Successfuly Selected', {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Slide,
+    })
   }
   console.log(selectedPlayer);
 
@@ -41,6 +64,17 @@ function App() {
   const handleDelete = (player) => {
     const filteredItem = selectedPlayer.filter(item => item.id !== player.id)
     setSelectdePlayer(filteredItem)
+    toast.success(<DeleteToast></DeleteToast>, {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Zoom,
+    })
 
   }
 
@@ -49,15 +83,12 @@ function App() {
       <Nav coins={coins}></Nav>
       <Hero></Hero>
       <PlayerPool active={active} handleAvailabe={handleAvailabe} handleSelected={handleSelected} selectedPlayer={selectedPlayer}></PlayerPool>
-
       {
         active ? <Suspense fallback={<Loading></Loading>}>
           <Players selectedPlayer={selectedPlayer} playerPromise={playerPromise} handleSelect={handleSelect}></Players>
-        </Suspense> : <SelectedPlayers selectedPlayer={selectedPlayer} handleDelete={handleDelete}></SelectedPlayers>
+        </Suspense> : <SelectedPlayers handleAvailabe={handleAvailabe} selectedPlayer={selectedPlayer} handleDelete={handleDelete}></SelectedPlayers>
       }
-
-
-
+      <ToastContainer></ToastContainer>
     </div>
   )
 }
